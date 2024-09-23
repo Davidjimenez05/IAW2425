@@ -11,3 +11,5 @@ para que esté sincronizado con tu cuenta y asi acceder desde casa.
 Algunos enlaces de interés:
 1. [Página oficial de git](https://git-scm.com/)
 2. [Página oficial de Docker](https://www.docker.com/)
+***
+Sitio web realizado por David Jimenez Ruiz.
