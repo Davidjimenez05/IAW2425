@@ -9,6 +9,7 @@
 </head>
 <body>
     <h1>Bienvenido al visualizador de posts con utilizacion de API</h1>
+    <input type="text" id="pais" placeholder="Escribe un Pais">
     <button id="btn-ver">Ver</button>
     <div id="resultados"></div>
 
@@ -16,18 +17,20 @@
 
         $(document).ready(function () {
             $("#btn-ver").click(function(e){
-            $.get("https://jsonplaceholder.typicode.com/photos").done(function(r){
+            let nombre = $("#pais").val();
+            $.get("https://restcountries.com/v3.1/name/"+nombre+"?fullText=true").done(function(r){
                 console.log(r);
                     let num_post = r.length;
                     $("#resultados").empty();
-                    for (let i = 0; i < num_post; i++) {
-                        let titulo = r[i].title;
-                        let fotos = r[i].url;
+                        let NombrePais = r[0].translations.spa.common;
+                        let Capital = r[0].capital;
+                        let poblacion = r[0].population;
+                        let bandera = r[0].flags.png;
                         $('#resultados').append(
-                            '<p>Titulo: ' + titulo + '</p>' +
-                            '<p>' + '<img width="120" src="' + fotos + '"></p>');
-                            
-                    };
+                            '<p>Nombre del Pais: ' + NombrePais + '</p>' +
+                            '<p>Capital: ' + Capital + '</p>' +
+                            '<p>Nº Población: ' + poblacion + '</p>' +
+                            '<p>' + '<img width="120" src="' + bandera + '"></p>');
             });
             
             });
