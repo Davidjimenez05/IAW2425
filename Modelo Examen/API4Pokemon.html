@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <title>Pokebolas</title>
+</head>
+<body>
+    <h1>Información Sobre Pokemons</h1>
+    <input type="text" name="pokemon" id="pokemon" placeholder="Introduzca el Nombre de un Pokemon">
+    <button id="btn-ver">Resultado</button>
+    <div id="Resultado"></div>
+
+    <script>
+        $(document).ready(function () {
+            $("#btn-ver").click(function(e){
+                let pokemon = $("#pokemon").val();
+            $.get("https://pokeapi.co/api/v2/pokemon/"+ pokemon).done(function(r){
+                console.log(r);
+                    let num_post = r.length;
+                    $("#resultados").empty();
+                        let nombre = r[0].forms.name;
+                        let abilidad1 = r[0].ability.name;
+                        let juego = r[0].game_indices.height;
+                        let tipo = r[0].types.type.name;
+                        $('#resultados').append(
+                            '<p>Nombre: ' + nombre + '</p>' +
+                            '<p>Abilidad: ' + abilidad1 + '</p>' +
+                            '<p>Indice de vida: ' + juego + '</p>' +
+                            '<p>Tipo: ' + tipo + '</p>' +
+                            '<p>' + '<img width="120" src="' + fotos + '"></p>');
+                            
+                    
+            });
+            
+            });
+            
+        });
+    </script>
+</body>
+</html>
