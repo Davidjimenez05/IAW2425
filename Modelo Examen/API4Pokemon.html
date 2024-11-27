@@ -11,7 +11,7 @@
     <h1>Información Sobre Pokemons</h1>
     <input type="text" name="pokemon" id="pokemon" placeholder="Introduzca el Nombre de un Pokemon">
     <button id="btn-ver">Resultado</button>
-    <div id="Resultado"></div>
+    <div id="resultados"></div>
 
     <script>
         $(document).ready(function () {
@@ -21,16 +21,15 @@
                 console.log(r);
                     let num_post = r.length;
                     $("#resultados").empty();
-                        let nombre = r[0].forms.name;
-                        let abilidad1 = r[0].ability.name;
-                        let juego = r[0].game_indices.height;
-                        let tipo = r[0].types.type.name;
+                        let nombre = r.name;
+                        let abilidad1 = r.abilities[1].ability.name;
+                        let juego = r.height;
+                        let tipo = r.types[0].type.name;
                         $('#resultados').append(
                             '<p>Nombre: ' + nombre + '</p>' +
                             '<p>Abilidad: ' + abilidad1 + '</p>' +
-                            '<p>Indice de vida: ' + juego + '</p>' +
-                            '<p>Tipo: ' + tipo + '</p>' +
-                            '<p>' + '<img width="120" src="' + fotos + '"></p>');
+                            '<p>Tamaño: ' + juego + '</p>' +
+                            '<p>Tipo: ' + tipo + '</p>');
                             
                     
             });
