@@ -6,10 +6,15 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <title>Pokebolas</title>
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <h1>Información Sobre Pokemons</h1>
-    <input type="text" name="pokemon" id="pokemon" placeholder="Introduzca el Nombre de un Pokemon">
+    <input type="text" name="pokemon" id="pokemon" placeholder="Pokemon o ID">
     <button id="btn-ver">Resultado</button>
     <div id="resultados"></div>
 
@@ -25,11 +30,13 @@
                         let abilidad1 = r.abilities[1].ability.name;
                         let juego = r.height;
                         let tipo = r.types[0].type.name;
+                        let foto = r.sprites.front_default;
                         $('#resultados').append(
                             '<p>Nombre: ' + nombre + '</p>' +
                             '<p>Abilidad: ' + abilidad1 + '</p>' +
                             '<p>Tamaño: ' + juego + '</p>' +
-                            '<p>Tipo: ' + tipo + '</p>');
+                            '<p>Tipo: ' + tipo + '</p>'+
+                        '<p>' + '<img width="120" src="' + foto + '"></p>');
                             
                     
             });
