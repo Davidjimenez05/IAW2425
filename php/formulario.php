@@ -3,7 +3,7 @@
     <input type="submit" value="Enviar">
     <?php
     if (isset($_GET["caja"])){
-        echo 'Hola' . htmlspecialchars($_GET["caja"]) . '!'
-    };
+        echo 'Hola ' . htmlspecialchars($_GET["caja"]) . '!';
+    }
     ?>
 </form>

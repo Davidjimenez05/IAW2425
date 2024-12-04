@@ -1,72 +1,51 @@
-<?php
-// Array de tweets
-$tweets = [
-    "Este es el primer tweet!",
-    "Aquí va el segundo tweet con más contenido.",
-    "¡Un tercer tweet para la colección!",
-];
-
-// Función para generar el código HTML de un tweet
-function mostrar_tweet($tweet) {
-    return "
-    <div class='tweet'>
-        <div class='tweet-content'>$tweet</div>
-    </div>
-    ";
-}
-
-// HTML inicial
-$html = "
 <!DOCTYPE html>
-<html lang='es'>
+<html lang="es">
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Tweets</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foreach3</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f8fa;
-            color: #14171a;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            width: 500px;
-            background-color: white;
+        .tweet-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #e1e8ed;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            font-family: Arial, sans-serif;
         }
-        .tweet {
-            border-bottom: 1px solid #e1e8ed;
-            padding: 10px 0;
+        .tweet-header {
+            font-size: 14px;
+            color: #657786;
         }
         .tweet-content {
             font-size: 16px;
+            color: #14171a; 
         }
     </style>
 </head>
 <body>
-    <div class='container'>
-";
 
-// Recorrer el array de tweets y añadirlos al HTML
-foreach ($tweets as $tweet) {
-    $html .= mostrar_tweet($tweet);
-}
+<?php
+    $tweets = [
+        "primer tweet",
+        "segundo tweet",
+        "tercer tweet",
+        "cuarto tweet"
+    ];
 
-// HTML final
-$html .= "
-    </div>
+    function mostrarTweet($tweets) {
+        foreach($tweets as $tweet){ 
+           echo "<div class='tweet-container'>
+                    <div class='tweet-header'>Usuario @ejemplo</div>
+                    <div class='tweet-content'>$tweet</div>
+                </div>";
+        }
+    }
+        mostrarTweet($tweets);
+    
+?>
+
 </body>
 </html>
-";
-
-// Mostrar el HTML
-echo $html;
-?>
