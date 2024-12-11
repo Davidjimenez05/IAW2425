@@ -21,7 +21,7 @@
         $usuario = htmlspecialchars($_POST["usuario"]);
         $password = htmlspecialchars($_POST["pass"]);
         if ($usuario=="admin" && $password=="HACKERS")
-            echo "<p>Bienvenido amo</p>";
+            echo "<p>Bienvenido amo $usuario</p>";
         else
             echo "<p>Error en usuario y/o contraseña</p>";
     }
