@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejersisio 7</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://code.jquery.com/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <style>
+        img{
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Giphy</h1>
+    <div>
+        <label for="">Introduzca el Titulo del GIF: </label><input type="text" id="titulo">
+        <button id="idtitulo">Buscar</button>
+        <div id="resultado"></div><br>
+    </div>
+    <script>
+    $(document).ready(function(){
+        $("#idtitulo").click(function(){
+        $("#resultado").empty();
+        var apiKey = 'dnrsyTSXUuLMFWpec7W9dHf3FdVqZK2p';
+        var tit = $("#titulo").val();
+        $.ajax({
+          url: 'https://api.giphy.com/v1/gifs/search?api_key='+apiKey+'&q='+ tit,
+          type: 'GET',
+          success: function(response){
+            console.log(response);
+            let num_gif = response.data.length;
+            for (let i=0; i<num_gif; i++){
+            let respuesta = new Object(response.data[i]);
+            let titulo = respuesta.title;
+            let imagen = respuesta.images.original.url;
+            $("#resultado").append("<p>"+ titulo +"</p>");
+            $("#resultado").append("<p>"+ "<img src="+ imagen+ ">" +"</p>");
+          }},
+          error: function(xhr, status, error){
+            $("#resultado").append("<p>"+"Error al procesar la solicitud: "+status+"</p>");
+          }
+        });
+      });
+    });
+    </script>
+</body>
+</html>

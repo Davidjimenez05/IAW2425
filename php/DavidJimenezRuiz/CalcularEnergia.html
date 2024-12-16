@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Energia</title>
+    <style>
+         .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <label for="masas">Introduce la Masa en Kg: </label><br>
+    <input type="text" id="masa"><br>
+    <label for="velocidad">Introduce la velocidad en m/s</label><br>
+    <input type="text" id="velocidad"><br>
+    <p id="resultado"></p>
+    <button onclick="button()">Enviar</button>
+<div id="resultado"></div>
+
+    <script>
+
+    function button(){
+
+    let masa = document.getElementById("masa").value;
+    let velocidad = document.getElementById("velocidad").value;
+
+    if(!isNaN(masa) && !isNaN(velocidad) ){
+        alert ('Error no a introducido nada o no es numerico');
+    }
+    else {
+        let formula = 1/2*masa*velocidad;
+    if (formula <10){
+        document.getElementById('resultado').textContent = "La energia cinética es baja: "+ formula + "Joules";
+    }
+    if (formula >=10 && formula <=100){
+        document.getElementById('resultado').textContent = "La energia cinética es moderada: "+ formula + "Joules";
+    }
+    if (formula <100){
+        document.getElementById('resultado').textContent = "La energia cinética es alta: "+ formula + "Joules";
+    }
+
+}
+    }
+
+    </script>
+</body>
+</html>
